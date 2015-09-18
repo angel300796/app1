@@ -1,0 +1,56 @@
+<html>
+    
+    <!-- Tod lo que se ve, pero que hace que funcione-->
+    <head>
+        <tittle>Login</tittle>
+        <meta charset = "utf-8"> <!-- es para poder poner acentos,etc -->
+        <meta name="viewport" content="width=device-width">
+        <link href="estilos.css"rel="stylesheet" type="text">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500italic' rel='stylesheet' type='text/css'>font-family: 'Roboto', sans-serif;
+        <script src = "funciones.js"></script>
+    </head>
+    <body>
+    <h1>Login</h1>
+    
+        
+        
+        <input type = "text" placeholder = "Nombre de Usuario" id = "usuario">
+        <input type = "password" placeholder = "Contraseña" id = "password" >
+        
+        <p id="mensaje">Texto de Relleno</p>
+        <button onclick="login()">Iniciar secion</button>
+        
+        
+        <div>
+        <p> o puedes registrarte</p>
+        
+        </div>
+    </body>
+    <script>
+        function login(){
+            //capturar lo datosescritos
+            usuario = document.getElementById('usuario').value;
+            password = document.getElementById('password').value;
+            
+            //comparar con valores almacenados
+            usuarioAlmacenado = localStorage.getItem('usuario');
+            passwordAlmacenado = localStorage.getItem('password');
+            
+            if(usuario == usuarioAlmacenado && password == passwordAlmacenado){
+                alert('el ususario se pudo loggear');
+            }
+            else{
+                //alert('ERROR: El usuario no existe');
+                document.getElementById('usuario').style.border="3px solid red";
+                document.getElementById('password').style.border="3px solid red";
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity="1";
+                mensaje.style.transition=".0s all";
+                mensaje.innerHTML="Error: usuario no valido";
+                navigator.vibrate('100');
+                navigator.vibrate('200');
+            }
+        }
+    </script>
+    
+</html>
